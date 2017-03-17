@@ -1,54 +1,25 @@
-Flask + Mongo Project Template
+Flask + Mongo Project
 ================
 
-Code to demonstrate 
-
+Target
+------------
 - Project template for Flask + Mongo Project.
 - use javascript testing framework in project.
 
-Setup
---------------
 
-- pip install requirements.txt
-- bower install (bower.json)
-- npm install (package.json)
-
-
-Requirements
+To Do List
 ------------
+* [] Use npm manage the dev lib and tools
 
-- Python 2.7 or 
-- virtualenv 
-- git
-- Network connection (only to install the application)
+* [] Use gulp 
 
-Setup
------
+* [] Create a **prefect** project structure, including Server side UT, interactive, client side UT and e2e test
 
-**Step 1**: Clone the git repository
+* [] Support **various** environment: dev, prd by using config.py
 
-    $ git clone https://github.com/benjaminhuanghuang/rest_bank_project.git
-    $ cd rest_bank_project
+* [] Server side UI
 
-**Step 2**: Create a virtual environment.
+* [] Client side UI and e2e test
 
-For Linux, OSX :
 
-    $ virtualenv venv
-    $ source venv/bin/activate
-    (venv) $ pip install -r requirements.txt
 
-For Windows users working on the standard command prompt:
-
-    > virtualenv venv
-    > venv\scripts\activate
-    (venv) > pip install -r requirements.txt
-
-**Step 3**: Install python library required in project directory
-
-For Linux, OSX :
-    (venv) $ pip install -r requirements.txt
-
-For Windows users working on the standard command prompt:
-    (venv) > pip install -r requirements.txt
-    

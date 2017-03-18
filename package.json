@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "name": "flask-mongo-seed",
+  "scripts": {
+    "postinstall": "typings install dt~core-js --global"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "~2.4.9",
+    "@angular/compiler": "~2.4.9",
+    "@angular/core": "~2.4.9",
+    "@angular/forms": "~2.4.9",
+    "@angular/http": "~2.4.9",
+    "@angular/platform-browser": "~2.4.9",
+    "@angular/platform-browser-dynamic": "~2.4.9",
+    "@angular/router": "~3.4.9",
+    "@angular/upgrade": "~2.4.9",
+
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.1",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.7.4",
+
+    "bootstrap": "^3.3.7",
+    "jquery-validation":"1.16.0",
+    "jquery-validation-unobtrusive":"3.2.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^3.1.5",
+    "gulp-uglify": "^2.0.0",
+    "typings": "^2.1.0",
+    "typescript": "^2.2.1"
+  }
+}

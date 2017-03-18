@@ -9,17 +9,33 @@ Target
 
 To Do List
 ------------
-* [] Use npm manage the dev lib and tools
+* [X] Use npm manage the dev lib and tools
 
-* [] Use gulp 
+* [X] Use gulp 
 
 * [] Create a **prefect** project structure, including Server side UT, interactive, client side UT and e2e test
 
 * [] Support **various** environment: dev, prd by using config.py
 
-* [] Server side UI
+* [] Use client side library bootstrap, Angular2 or JQuery
 
-* [] Client side UI and e2e test
+* [] Authentication(Token / AuthO) and Authorization(Role / Group)  
+
+* [] Sever and client side Validation
+
+* [] Server side testing (UT, performance and coverage)
+
+* [] Client side testing (UT, e2e, performance)
+
+
+Follow up (**additional**)
+------------
+* [] Debug Skill
+* [] Coding style
+
+
+
+
 
 
 

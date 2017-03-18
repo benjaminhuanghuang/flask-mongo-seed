@@ -1,3 +1,9 @@
+
+node_modules/
+app/static/js_app/
+app/static/js_lib/
+
+
 *.py[cod]
 
 # OS X system file

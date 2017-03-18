@@ -7,9 +7,9 @@ var gulp = require('gulp'),
 
 /// Define paths
 var srcPaths = {
-    app: ['Scripts/app/main.ts', 'Scripts/app/**/*.ts'],
-    js: [
-         'Scripts/js/**/*.js',
+    app_client: ['app_client/**/*.ts'],
+    js_lib: [
+         'app_client/**/*.js',
 
          'node_modules/core-js/client/shim.min.js',
          'node_modules/zone.js/dist/zone.js',
@@ -26,27 +26,27 @@ var srcPaths = {
 };
 
 var destPaths = {
-    app: 'wwwroot/app/',
-    js: 'wwwroot/jslib/',
-    js_angular: 'wwwroot/jslib/@angular/',
-    js_rxjs: 'wwwroot/jslib/rxjs/'
+    js_app: 'app/static/js_app/',
+    js_lib: 'app/static/js_lib/',
+    js_angular: 'app/static/js_lib/@angular/',
+    js_rxjs: 'app/static/js_lib/rxjs/'
 };
 // Compile, minify and create sourcemaps all TypeScript files and place
-// them to wwwroot / app, together with their js.map files.
+// them to app/static/js_app, together with their js.map files.
 // Run dependency task 'app_clean' before
 gulp.task('app',['app_clean'], function () {
-    return gulp.src(srcPaths.app)
+    return gulp.src(srcPaths.app_client)
         .pipe(gp_sourcemaps.init())
         .pipe(gp_typescript(require('./tsconfig.json').compilerOptions))
         .pipe(gp_uglify({
             mangle: false   // set false to skip mangling names.
         }))
         .pipe(gp_sourcemaps.write('/'))
-        .pipe(gulp.dest(destPaths.app));
+        .pipe(gulp.dest(destPaths.js_app));
 });
-// Delete wwwroot/app contents
+// Delete app/static/js_app contents
 gulp.task('app_clean', function () {
-    return gulp.src(destPaths.app + "*", {
+    return gulp.src(destPaths.js_app + "*", {
             read: false
         })
         .pipe(gp_clean({
@@ -54,21 +54,23 @@ gulp.task('app_clean', function () {
         }));
 });
 
-// Copy all JS files from external libraries to wwwroot/js
-gulp.task('js', function () {
+// Copy all JS files from external libraries to app/static/js_lib
+gulp.task('js_lib', function () {
     gulp.src(srcPaths.js_angular)
         .pipe(gulp.dest(destPaths.js_angular));
+
     gulp.src(srcPaths.js_rxjs)
         .pipe(gulp.dest(destPaths.js_rxjs));
-    return gulp.src(srcPaths.js)
+
+    return gulp.src(srcPaths.js_lib)
         // .pipe(gp_uglify({ mangle: false })) // disable uglify
         // .pipe(gp_concat('all-js.min.js')) // disable concat
-        .pipe(gulp.dest(destPaths.js));
+        .pipe(gulp.dest(destPaths.js_lib));
 });
 
-// Delete wwwroot/js contents
+// Delete app/static/js_lib contents
 gulp.task('js_clean', function () {
-    return gulp.src(destPaths.js + "*", {
+    return gulp.src(destPaths.js_lib + "*", {
             read: false
         })
         .pipe(gp_clean({
@@ -78,11 +80,11 @@ gulp.task('js_clean', function () {
 
 // Watch specified files and define what to do upon file changes
 gulp.task('watch', function () {
-    gulp.watch([srcPaths.app, srcPaths.js], ['app', 'js']);
+    gulp.watch([srcPaths.app_client, srcPaths.js_lib] ['app', 'js']);
 });
 
 // Global cleanup task
 gulp.task('cleanup', ['app_clean', 'js_clean']);
 
 // Define the default task so it will launch all other tasks
-gulp.task('default', ['app', 'js', 'watch']);
+gulp.task('default', ['app', 'js_lib', 'watch']);

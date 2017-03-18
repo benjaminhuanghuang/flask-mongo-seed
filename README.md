@@ -27,6 +27,10 @@ To Do List
 
 * [] Client side testing (UT, e2e, performance)
 
+* [] Log system 
+
+* [] Send email 
+
 
 Follow up (**additional**)
 ------------

@@ -25,6 +25,8 @@ To Do List
 
 * [] Sever and client side Validation
 
+* [] Error handling and log system / email to admin
+
 * [] Security : XSS
 
 * [] Theme
@@ -34,10 +36,6 @@ To Do List
 * [] Server side testing (UT, performance and coverage)
 
 * [] Client side testing (UT, e2e, performance)
-
-* [] Log system 
-
-* [] Send email 
 
 * [] Multithread
 

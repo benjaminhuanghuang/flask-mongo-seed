@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "flask-mongo-seed",
   "scripts": {
-    "postinstall": "typings install dt~core-js --global"
+    "postinstall": "typings install dt~core-js dt~node --global"
   },
   "private": true,
   "dependencies": {

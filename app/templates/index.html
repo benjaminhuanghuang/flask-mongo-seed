@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <base href ="/">
+    <my-app><!-- content managed by Angular --></my-app>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <script src="static/js_lib/shim.min.js"></script>
+    <script src="static/js_lib/zone.js"></script>
+    <script src="static/js_lib/system.src.js"></script>
+    <script src="static/js_lib/systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+{% endblock %}

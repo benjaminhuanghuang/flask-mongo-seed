@@ -7,7 +7,7 @@ if os.path.exists('.env'):
             os.environ[var[0]] = var[1]
 
 from app import create_app
-from flask.ext.script import Manager
+from flask_script import Manager
 
 app = create_app('default')
 manager = Manager(app)

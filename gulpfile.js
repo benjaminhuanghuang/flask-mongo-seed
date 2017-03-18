@@ -7,22 +7,23 @@ var gulp = require('gulp'),
 
 /// Define paths
 var srcPaths = {
-    app_client: ['app_client/**/*.ts'],
+    ts: ['app_client/**/*.ts'],
+    template: ['app_client/**/*.html'],
     js_lib: [
-         'app_client/**/*.js',
+        'app_client/**/*.js',
 
-         'node_modules/core-js/client/shim.min.js',
-         'node_modules/zone.js/dist/zone.js',
-         'node_modules/reflect-metadata/Reflect.js',
-         'node_modules/systemjs/dist/system.src.js',
-         'node_modules/typescript/lib/typescript.js'
+        'node_modules/core-js/client/shim.min.js',
+        'node_modules/zone.js/dist/zone.js',
+        'node_modules/reflect-metadata/Reflect.js',
+        'node_modules/systemjs/dist/system.src.js',
+        'node_modules/typescript/lib/typescript.js'
     ],
     js_angular: [
         'node_modules/@angular/**'
-        ],
+    ],
     js_rxjs: [
         'node_modules/rxjs/**'
-        ]
+    ]
 };
 
 var destPaths = {
@@ -34,8 +35,8 @@ var destPaths = {
 // Compile, minify and create sourcemaps all TypeScript files and place
 // them to app/static/js_app, together with their js.map files.
 // Run dependency task 'app_clean' before
-gulp.task('app',['app_clean'], function () {
-    return gulp.src(srcPaths.app_client)
+gulp.task('ts', ['template'], function () {
+    return gulp.src(srcPaths.ts)
         .pipe(gp_sourcemaps.init())
         .pipe(gp_typescript(require('./tsconfig.json').compilerOptions))
         .pipe(gp_uglify({
@@ -78,6 +79,12 @@ gulp.task('js_clean', function () {
         }));
 });
 
+// Copy all angular templates to js_app
+gulp.task('template', function () {
+    gulp.src(srcPaths.template)
+        .pipe(gulp.dest(destPaths.js_app));
+});
+
 // Watch specified files and define what to do upon file changes
 gulp.task('watch', function () {
     gulp.watch([srcPaths.app_client, srcPaths.js_lib] ['app', 'js']);
@@ -87,4 +94,4 @@ gulp.task('watch', function () {
 gulp.task('cleanup', ['app_clean', 'js_clean']);
 
 // Define the default task so it will launch all other tasks
-gulp.task('default', ['app', 'js_lib', 'watch']);
+gulp.task('default', ['ts', 'js_lib']);

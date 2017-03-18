@@ -17,11 +17,19 @@ To Do List
 
 * [] Support **various** environment: dev, prd by using config.py
 
+* [] Application Factory pattern
+
 * [] Use client side library bootstrap, Angular2 or JQuery
 
-* [] Authentication(Token / AuthO) and Authorization(Role / Group)  
+* [] **Authentication**(Token / AuthO) and **Authorization**(Role / Group)  
 
 * [] Sever and client side Validation
+
+* [] Security : XSS
+
+* [] Theme
+
+* [] I18N
 
 * [] Server side testing (UT, performance and coverage)
 
@@ -31,11 +39,14 @@ To Do List
 
 * [] Send email 
 
+* [] Multithread
+
 
 Follow up (**additional**)
 ------------
-* [] Debug Skill
+* [] Thouble shooting and debugging Skill
 * [] Coding style
+
 
 
 

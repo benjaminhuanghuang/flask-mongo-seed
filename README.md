@@ -17,9 +17,9 @@ To Do List
 
 * [] Support **various** environment: dev, prd by using config.py
 
-* [] Application Factory pattern
+* [X] Application Factory pattern
 
-* [] Use client side library bootstrap, Angular2 or JQuery
+* [X] Use client side library bootstrap, Angular2 or JQuery
 
 * [] **Authentication**(Token / AuthO) and **Authorization**(Role / Group)  
 

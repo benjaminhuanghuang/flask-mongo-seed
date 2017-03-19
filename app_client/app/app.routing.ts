@@ -6,7 +6,7 @@ import {AboutComponent} from "./components/pages/about.component";
 
 const  appRoutes: Routes=[
     {
-        path:"",
+        path:"dashboard",
         component:HomeComponent
     },
     {

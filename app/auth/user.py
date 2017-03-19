@@ -1,6 +1,6 @@
 from werkzeug.security import check_password_hash
 from bson import ObjectId
-from app import db_client
+from app import db_client, login_manager
 from permission import Permission
 
 
@@ -46,12 +46,10 @@ def user_login(user_name, password):
         return None
     return User(u)
 
-
+@login_manager.user_loader
 def load_user(user_id):
     u = db_client.db['users'].find_one({"_id": ObjectId(user_id)})
     if not u:
         return None
     user = User(u)
     return user
-
-# current_app.login_manager.user_loader = load_user

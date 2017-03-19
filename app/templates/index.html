@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-    <base href ="/">
-    <my-app><!-- content managed by Angular --></my-app>
+    <h1>Welcome</h1>
+    <a href="{{ url_for('.dashboard') }}">Go to dashboard</a>
 {% endblock %}
 
 {% block scripts %}
-{{ super() }}
-    <script type="text/javascript" src="static/js_app/inline.bundle.js"></script>
-    <script type="text/javascript" src="static/js_app/polyfills.bundle.js"></script>
-    <script type="text/javascript" src="static/js_app/vendor.bundle.js"></script>
-    <script type="text/javascript" src="static/js_app/main.bundle.js"></script>
+    {{ super() }}
 {% endblock %}

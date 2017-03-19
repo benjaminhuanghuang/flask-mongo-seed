@@ -18,7 +18,7 @@ class DevelopmentConfig(Config):
     MONGO_SERVER = "127.0.0.1"
     MONGO_PORT = 27017
     DEBUG = True
-    LOGIN_DISABLED = True
+    LOGIN_DISABLED = False
 
 class TestingConfig(Config):
     TESTING = True

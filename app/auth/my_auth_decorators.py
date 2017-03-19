@@ -1,20 +1,22 @@
 import functools
-from flask import session, abort, flash, redirect, url_for
-from flask.ext.login import current_user
-
+from flask import current_app, abort
+from flask_login import current_user
 from permission import Permission
 
 
 def login_required(func):
+    '''
+    decorate check use is authenticated before calling the actual view.
+    It is a sample, I did not use it in project yet.
+    '''
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        if 'logged_in' in session:
+        skip_login = current_app.config.get('LOGIN_DISABLED', current_app.config.get('TESTING', False))
+        if skip_login:
             return func(*args, **kwargs)
-        else:
-            # abort(403)
-            flash('You need to login first.')
-            return redirect(url_for('login'))
-
+        elif not current_app.login_manager.is_current_user_authenticated():
+            return current_app.login_manager.unauthorized()
+        return func(*args, **kwargs)
     return wrapper
 
 

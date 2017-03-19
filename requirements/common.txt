@@ -15,7 +15,7 @@ Flask-Script==2.0.5
 Flask-WTF==0.10.0
 Werkzeug>=0.7
 Jinja2>=2.4
-
+Flask-Bootstrap==3.0.3.1
 
 # Database
 pymongo>=3.4.0

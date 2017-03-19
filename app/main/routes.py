@@ -1,6 +1,9 @@
 from flask import render_template, redirect, url_for
 from . import main
-from app.auth.auth_decorators import *
+
+from flask_login import LoginManager, login_required
+# from app.auth.my_auth_decorators import login_required
+
 
 @main.route('/dashboard', methods=['GET'])
 @login_required

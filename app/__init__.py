@@ -2,6 +2,8 @@ from flask import Flask
 from flask_mail import Mail
 
 from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
+
 from config import config
 
 from db_client import DBClient
@@ -15,6 +17,7 @@ db_client = DBClient()
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
 
+bootstrap = Bootstrap()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -23,10 +26,11 @@ def create_app(config_name):
     # flask ext init
     mail.init_app(app)  # read app.config to mail
     login_manager.init_app(app)
+    bootstrap.init_app(app)
 
     db_client.init_app(app)
 
-    # init route
+    # init routes
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 

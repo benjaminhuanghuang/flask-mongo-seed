@@ -24,14 +24,14 @@ class User():
         return str(self.u["_id"])
 
     def can(self, permissions):
-        p = user_permission(self.role)
+        p = role_to_permission(self.role)
         return (p & permissions) == permissions
 
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
 
 
-def user_permission(role):
+def role_to_permission(role):
     roles = {
         'user': Permission.READ,
         'tutor': (Permission.READ | Permission.WRITE | Permission.DELETE),
@@ -40,7 +40,7 @@ def user_permission(role):
     return roles.get(role, roles["user"])
 
 
-def user_login(user_name, password):
+def validate_username_password(user_name, password):
     u = db_client.db['users'].find_one({"user_name": user_name})
     if not u or not check_password_hash(u["password"], password):
         return None

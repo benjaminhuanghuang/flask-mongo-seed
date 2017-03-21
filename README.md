@@ -46,8 +46,10 @@ Follow up (**additional**)
 * [] Coding style
 
 
-
-
+How to run 
+------------
+$ ng build
+$ gulp template
 
 
 

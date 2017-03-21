@@ -42,7 +42,7 @@ To Do List
 
 Follow up (**additional**)
 ------------
-* [] Thouble shooting and debugging Skill
+* [] Trouble shooting and debugging Skill
 * [] Coding style
 
 

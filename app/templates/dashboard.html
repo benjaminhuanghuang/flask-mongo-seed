@@ -1,8 +1,9 @@
-{% extends "base.html" %}
+{% extends "base_bs_nav.html" %}
 
 {% block page_content %}
-    <base href ="/">
-    <my-app><!-- content managed by Angular --></my-app>
+    <h1>Hello, {{ current_user.username }}!</h1>
+{#    <base href ="/">#}
+{#    <my-app><!-- content managed by Angular --></my-app>#}
 {% endblock %}
 
 {% block scripts %}

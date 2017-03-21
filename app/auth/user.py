@@ -7,7 +7,7 @@ import base64
 class User():
     def __init__(self, u):
         self.u = u
-        self.user_name = u["user_name"]
+        self.username = u["user_name"]
         self.email = u["user_name"]
         self.role = u.get("role", "user")
 

@@ -4,8 +4,9 @@ Flask + Mongo Project Setup
 
 Python 2
 --------------
-$ brew install python3
-$ python3 --version
+$ brew install python
+
+$ python --version
 
 $ virtualenv venv           # install virtual environment for python
 
@@ -19,6 +20,7 @@ $ source venv/bin/activate
 Python 3 on Mac
 --------------
 $ brew install python3
+
 $ python3 --version
 
 $ pyvenv venv3           # install virtual environment for python 3

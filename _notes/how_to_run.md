@@ -1,0 +1,2 @@
+$ ng build
+$ gulp template

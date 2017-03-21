@@ -14,11 +14,11 @@ def signup():
         user_name = form.username.data
         password = form.password.data
         if is_user_existed(user_name):
-            flash('Invalid username or password.')
+            flash('User name is existed.')
         else:
             user = create_user(user_name, password)
             login_user(user)
-            return redirect(request.args.get('next') or url_for('main.index'))
+            return redirect(request.args.get('next') or url_for('main.dashboard'))
     return render_template('auth/signup.html', form=form)
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -28,11 +28,10 @@ def login():
         user = validate_username_password(form.email.data, form.password.data)
         if user:
             login_user(user, form.remember_me.data)
-            flash('User name is existed.')
             next = request.args.get('next')
             if not is_safe_url(next):
                 return abort(400)
-            return redirect(next or url_for('main.index'))
+            return redirect(next or url_for('main.dashboard'))
         flash('Invalid username or password.')
     return render_template('auth/login.html', form=form)
 

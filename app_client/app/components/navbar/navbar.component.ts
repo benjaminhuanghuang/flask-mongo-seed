@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: 'navbar.component.html'
 })
 export class NavbarComponent  { 
-  branding = 'Navbar-Branding';
+  branding = 'Flask+Mongo';
 }

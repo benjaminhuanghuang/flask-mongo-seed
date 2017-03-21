@@ -3,16 +3,13 @@ from flask_mail import Mail
 
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+from flask_pymongo import PyMongo
 
 from config import config
 
-from db_client import DBClient
-
-
 mail = Mail()
 
-db_client = DBClient()
-
+mongo = PyMongo()
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -28,7 +25,7 @@ def create_app(config_name):
     login_manager.init_app(app)
     bootstrap.init_app(app)
 
-    db_client.init_app(app)
+    mongo.init_app(app)
 
     # init routes
     from .main import main as main_blueprint

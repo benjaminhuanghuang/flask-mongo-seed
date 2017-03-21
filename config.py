@@ -4,7 +4,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    DATABASE = "game_joy"
+    MONGO_URI = "mongodb://localhost:27017/game-joy"
+    MONGO_DBNAME = "game_joy"
 
     SECRET_KEY = 'f1a3k'
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -15,8 +16,6 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    MONGO_SERVER = "127.0.0.1"
-    MONGO_PORT = 27017
     DEBUG = True
     LOGIN_DISABLED = False
 

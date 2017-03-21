@@ -1,4 +1,4 @@
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 from bson import ObjectId
 from app import db_client, login_manager
 from permission import Permission
@@ -45,6 +45,22 @@ def validate_username_password(user_name, password):
     if not u or not check_password_hash(u["password"], password):
         return None
     return User(u)
+
+
+def create_user(user_name, password):
+    new_user = {
+        user_name: "user_name",
+        password: generate_password_hash(password, method='pbkdf2:sha256')
+    }
+    _id = db_client.db['users'].insert(new_user)
+    u = db_client.db['users'].find_one({"_id": _id})
+
+    return User(u)
+
+def is_user_existed(user_name):
+    u = db_client.db['users'].find_one({"user_name": user_name})
+    return u is not None
+
 
 @login_manager.user_loader
 def load_user(user_id):

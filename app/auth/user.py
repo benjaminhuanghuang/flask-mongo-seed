@@ -2,7 +2,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from bson import ObjectId
 from app import db_client, login_manager
 from permission import Permission
-
+import base64
 
 class User():
     def __init__(self, u):
@@ -47,10 +47,10 @@ def validate_username_password(user_name, password):
     return User(u)
 
 
-def create_user(user_name, password):
+def create_user(user_name, pwd):
     new_user = {
-        user_name: "user_name",
-        password: generate_password_hash(password, method='pbkdf2:sha256')
+        "user_name": user_name,
+        "password": generate_password_hash(pwd, method='pbkdf2:sha256')
     }
     _id = db_client.db['users'].insert(new_user)
     u = db_client.db['users'].find_one({"_id": _id})
@@ -69,3 +69,29 @@ def load_user(user_id):
         return None
     user = User(u)
     return user
+
+#  support login from a url argument or from Basic Auth using the Authorization header
+@login_manager.request_loader
+def load_user_from_request(request):
+
+    # first, try to login using the api_key url arg
+    api_key = request.args.get('api_key')
+    if api_key:
+        user = User.query.filter_by(api_key=api_key).first()
+        if user:
+            return user
+
+    # next, try to login using Basic Auth
+    api_key = request.headers.get('Authorization')
+    if api_key:
+        api_key = api_key.replace('Basic ', '', 1)
+        try:
+            api_key = base64.b64decode(api_key)
+        except TypeError:
+            pass
+        user = User.query.filter_by(api_key=api_key).first()
+        if user:
+            return user
+
+    # finally, return None if both methods did not login the user
+    return None

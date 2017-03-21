@@ -16,7 +16,11 @@
     
 
 [*] "Remember me" works
-
+    By default, when the user closes their browser the Flask Session is deleted and the user is logged out. 
+    “Remember Me” prevents the user from accidentally being logged out when they close their browser. 
+    Flask-Login pass remember=True to the login_user call. A cookie will be saved on the user’s computer, 
+    and then Flask-Login will automatically restore the user ID from that cookie if it is not in the session.
+    
 [*] Support OpenID
 
 [*] Support various database

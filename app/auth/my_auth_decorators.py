@@ -32,6 +32,14 @@ def permission_required(permission):
 
     return decorator
 
+def admin_login_required(func):
+    @functools.wraps(func)
+    def decorated_view(*args, **kwargs):
+        if not current_user.is_admin():
+            return abort(403)
+        return func(*args, **kwargs)
+    return decorated_view
+
 
 def admin_required(func):
     return permission_required(Permission.ADMINISTER)(func)
